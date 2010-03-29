@@ -101,15 +101,15 @@ function setprompt {
     eval PR_BOLD_DEFAULT='%{$fg_bold[default]%}'
 
     # Finally, let's set the prompt
-    PROMPT='${PR_BOLD_RED}<${PR_RED}<${PR_BOLD_BLACK}<${PR_BOLD_DEFAULT} \
+    PROMPT='${PR_BOLD_RED}<${PR_BOLD_DEFAULT} \
 %D{%Y-%m-%d %R.%S}${PR_RED}|${PR_PWDCOLOR}%${PR_PWDLEN}<...<%~%<<\
 
-${PR_BOLD_RED}<${PR_RED}<${PR_BOLD_BLACK}<\
+${PR_BOLD_RED}<\
 ${PR_BOLD_DEFAULT} %n@%m${PR_RED}|${PR_BOLD_DEFAULT}%h${PR_BOLD_RED}\
 %(?.. exit:%?)${PR_BOLD_BLUE}${PR_SCREEN}${PR_JOBS}${PR_VCS}${PR_BATTERY}\
 ${PR_BOLD_BLUE}${VIMODE}\
 
-${PR_BOLD_BLACK}>${PR_GREEN}>${PR_BOLD_GREEN}>\
+${PR_BOLD_GREEN}>\
 %{${reset_color}%} '
 
     # Of course we need a matching continuation prompt
