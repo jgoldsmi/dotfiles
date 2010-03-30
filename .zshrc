@@ -144,6 +144,17 @@ setopt autocd
 setopt auto_resume
 setopt extendedglob
 
+# Quick change directories
+function rationalize-dot {
+    if [[ $LBUFFER = *.. ]]; then
+        LBUFFER+=/..
+    else
+        LBUFFER+=.
+    fi
+}
+zle -N rationalize-dot
+bindkey . rationalize-dot
+
 # aliases
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'
