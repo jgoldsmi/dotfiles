@@ -82,7 +82,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# New bash options
+# Various bash options
+set -o vi
+set -o ignoreeof
+shopt -s dotglob
+shopt -s histappend
+shopt -s checkwinsize
 shopt -s autocd
 shopt -s checkjobs
 shopt -s globstar
