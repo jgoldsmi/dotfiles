@@ -100,6 +100,8 @@ export PAGER=less
 export BROWSER=firefox
 export TERM=xterm
 
+export PATH=$PATH:~/.gem/ruby/1.8/bin
+
 # Prompt and set xterm title
 export PS1='[\u@\h] \w$(__git_ps1 "(%s)" 2>/dev/null) \\$ '
 
