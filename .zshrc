@@ -206,6 +206,8 @@ export ORACLE_HOME=/u01/app/oracle/product/10.2.0/client_1
 export ORACLE_SID=YOURSID
 export PATH=$PATH:/u01/app/oracle/product/10.2.0/client_1/bin
 
+export PATH=$PATH:~/.gem/ruby/1.8/bin
+
 if [[ -f ~/.zshrc-private ]]; then
     source ~/.zshrc-private
 fi
