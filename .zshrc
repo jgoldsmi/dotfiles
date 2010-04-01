@@ -1,11 +1,12 @@
-# Lines configured by zsh-newuser-install
+#~/.zshrc
+# History options
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+setopt hist_ignore_dups hist_append share_history
 setopt autocd extendedglob
 unsetopt beep
 bindkey -v
-# End of lines configured by zsh-newuser-install
 
 # prompt stuff
 autoload -U promptinit
