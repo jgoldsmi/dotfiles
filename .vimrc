@@ -6,7 +6,7 @@ set directory=~/.vim/tmp
 set omnifunc=syntaxcomplete#Complete
 set number
 set background=dark
-set expandtab
+set expandtab smarttab
 set shiftwidth=4 tabstop=8 softtabstop=4
 set shiftround
 set hidden
@@ -64,6 +64,9 @@ let php_parent_error_open             = 1
 " Shell settings
 au FileType sh setl et sw=4 ts=4 sts=4 ai si
 let g:is_bash = 1
+
+" Ruby settings
+au FileType ruby setl et sw=2 ts=2 sts=2 ai si
 
 " Custom functions
 function! CmdLine(str)
