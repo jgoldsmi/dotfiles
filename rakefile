@@ -1,0 +1,21 @@
+
+home_dir = ENV['HOME']
+
+desc "Deploy all configs"
+task :default => [:deploy_bash_config, :deploy_zsh_config]
+
+desc "Deploy bash configs"
+task :deploy_bash_config do |t|
+  cp %w(.bashrc .bash_aliases), home_dir
+end
+
+desc "Deploy zsh configs"
+task :deploy_zsh_config do |t|
+  cp '.zshrc', home_dir
+end
+
+desc "Deploy vim configs"
+task :deploy_vim_config do |t|
+  cp '.vimrc', home_dir
+  cp_r '.vim', home_dir
+end
