@@ -109,5 +109,7 @@ export PATH=$PATH:~/.gem/ruby/1.8/bin
 
 # Prompt and set xterm title
 export PS1='[\u@\h] \w$(__git_ps1 "(%s)" 2>/dev/null) \\$ '
+export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+
 
 [ -e ~/.bashrc-private ] && . ~/.bashrc-private
