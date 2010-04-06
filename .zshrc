@@ -69,6 +69,9 @@ function precmd {
             PR_BATTERY=""
         fi
     fi
+
+    # Set the xterm title
+    print -Pn "\e]0;%n@%m: %~\a"
 }
 
 # If I am using vi keys, I want to know what mode I'm currently using.
