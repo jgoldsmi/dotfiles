@@ -200,6 +200,7 @@ alias gg='ack-grep'
 alias ack='ack-grep'
 alias exot=exit
 alias exut=exit
+alias d='dirs -v'
 
 
 function rebuild_drupal_tags {
