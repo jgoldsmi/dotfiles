@@ -24,6 +24,7 @@ set mouse=a
 set showmatch showmode matchtime=5
 set showcmd
 set autoindent smartindent
+set printoptions=number:y,paper:letter
 set scrolloff=5
 set wrap
 set vb t_vb=
