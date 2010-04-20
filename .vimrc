@@ -50,7 +50,7 @@ au FileType c setl cin ts=8 sts=8 sw=8 fo=crql
 let python_highlight_all = 1
 
 " PHP settings
-au FileType php setl et sw=2 ts=2 sts=2 ai si tags+=~/.vim/tags/php
+au FileType php setl et sw=2 ts=2 sts=2 ai si isk-=$ tags+=~/.vim/tags/php
 au BufRead,BufNewFile *.module  set ft=php
 au BufRead,BufNewFile *.install set ft=php
 au BufRead,BufNewFile *.inc     set ft=php
@@ -98,6 +98,7 @@ endfunction
 nmap <leader>nt :NERDTreeToggle<CR>
 nmap <leader>tl :TlistToggle<CR>
 nmap <leader>ff :FufTaggedFile<CR>
+nmap <leader>ft :FufTag<CR>
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
