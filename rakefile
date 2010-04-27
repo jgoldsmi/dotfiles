@@ -19,3 +19,8 @@ task :deploy_vim_config do |t|
   cp '.vimrc', home_dir
   cp_r '.vim', home_dir
 end
+
+desc "Deploy screen config"
+task :deploy_screen_config do |t|
+  cp '.screenrc', home_dir
+end

@@ -1,0 +1,17 @@
+# don't display startup page
+startup_message off
+# scrollback forever
+defscrollback 100000
+# 30 seconds is too long
+silencewait 15
+# hardstatus
+hardstatus on
+hardstatus alwayslastline "%{=b kW}[%{= G}%H%{b W}][ %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= G}%m/%d/%y %{G}%C%{b W}]"
+# settings for 256 color terminal, doesn't work by default
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
