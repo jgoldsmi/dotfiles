@@ -105,18 +105,23 @@ bakpur='\e[45m'   # Purple
 bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
-function set_screen() {
+function prompt_command {
+    status="$?"
+    exit_status=
+    if [[ "$status" -ne 0 ]]; then
+        exit_status="${bldred}exit:${status}${txtrst}"
+    fi
+    echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007";
     win_num=
     if [[ -n "$WINDOW" ]]; then
-        win_num=${bldblu}screen:$WINDOW$txtrst
+        win_num="${bldblu}screen:${WINDOW}${txtrst}"
     fi
-}
-set_screen
-line_1="${bldred}< ${bldwht}$(date +%Y-%m-%d) $(date +%H:%M.%S)${txtred}|${bldwht}\w${txtrst}"
-line_2="${bldred}<${bldwht} \u@\h${txtred}|${bldwht}\!${txtrst} ${win_num}"
-line_3="${bldgrn}>${txtrst} "
-export PS1="${line_1}\n${line_2}\n${line_3}"
-export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007";'
+    line_1="${bldred}< ${bldwht}\$(date +%Y-%m-%d) \$(date +%H:%M.%S)${txtred}|${bldwht}\w${txtrst}"
+    line_2="${bldred}<${bldwht} \u@\h${txtred}|${bldwht}\!${txtrst} ${win_num} ${exit_status}"
+    line_3="${bldgrn}>${txtrst} "
+    export PS1="${line_1}\n${line_2}\n${line_3}"
 
+}
+export PROMPT_COMMAND="prompt_command"
 
 [ -e ~/.bashrc-private ] && . ~/.bashrc-private
