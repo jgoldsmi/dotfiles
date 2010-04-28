@@ -4,6 +4,8 @@ startup_message off
 defscrollback 100000
 # 30 seconds is too long
 silencewait 15
+# No residual editor text
+altscreen on
 # hardstatus
 hardstatus on
 hardstatus alwayslastline "%{=b kW}[%{= G}%H%{b W}][ %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= G}%m/%d/%y %{G}%C%{b W}]"
