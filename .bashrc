@@ -66,7 +66,6 @@ export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
 export BROWSER=firefox
-export TERM=xterm
 
 export PATH=$PATH:~/.gem/ruby/1.8/bin
 

@@ -247,7 +247,6 @@ export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
 export BROWSER=firefox
-export TERM=xterm
 
 # oracle related stuff
 export ORACLE_BASE=/u01/app/oracle
