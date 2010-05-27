@@ -16,12 +16,12 @@ set ignorecase
 set magic
 set ruler
 set smartcase
-set cursorline
 set laststatus=2
 set nostartofline
 set backspace=eol,indent,start
 set mouse=a
-set showmatch showmode matchtime=5
+set showmode
+set showmatch matchtime=5
 set showcmd
 set autoindent smartindent
 set printoptions=number:y,paper:letter
@@ -29,10 +29,11 @@ set scrolloff=5
 set wrap
 set vb t_vb=
 set t_Co=256
-colorscheme wombat256
+colorscheme molokai
 set listchars=eol:¶,tab:»=,trail:·,extends:»,precedes:« list
 set wildmenu wildmode=list:longest
 autocmd BufEnter * lcd %:p:h "always change dir to file we're editing
+let loaded_matchparen = 1
 
 " Restore file position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
