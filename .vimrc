@@ -46,9 +46,11 @@ let NERDShutUp=1
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn .git'
 set grepprg=ack-grep\ -a
 
+" C settings
+au FileType c setl cin ts=4 sts=4 sw=4 fo=crql
+
 " Python settings
 au FileType python setl sta ts=4 sw=4 sts=4 fo=crql
-au FileType c setl cin ts=8 sts=8 sw=8 fo=crql
 let python_highlight_all = 1
 
 " PHP settings
