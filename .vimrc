@@ -25,6 +25,7 @@ set showmatch matchtime=5
 set showcmd
 set autoindent smartindent
 set printoptions=number:y,paper:letter
+set tags=./tags;
 set scrolloff=5
 set wrap
 set vb t_vb=
@@ -52,7 +53,7 @@ au FileType c setl cin ts=8 sts=8 sw=8 fo=crql
 let python_highlight_all = 1
 
 " PHP settings
-au FileType php setl et sw=2 ts=2 sts=2 ai si isk-=$ tags+=~/.vim/tags/php
+au FileType php setl et sw=2 ts=2 sts=2 ai si isk-=$
 au BufRead,BufNewFile *.module  set ft=php
 au BufRead,BufNewFile *.install set ft=php
 au BufRead,BufNewFile *.inc     set ft=php
