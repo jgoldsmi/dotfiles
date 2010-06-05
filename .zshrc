@@ -216,17 +216,6 @@ function rebuild_drupal_tags {
     popd
 }
 
-function deploy_configs {
-    # Quick function to deploy shell configs
-    local src_dir=$1
-    if [[ -z $src_dir ]]; then
-        echo "Usage: deploy_configs src_dir"
-        return 1
-    fi
-    cp -r $src_dir/.(zsh|bash)* ~/
-    return 0
-}
-
 # Aliases for XAMPP
 alias lampstart='sudo /opt/lampp/lampp start'
 alias lampstop='sudo /opt/lampp/lampp stop'
