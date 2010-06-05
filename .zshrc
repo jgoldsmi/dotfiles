@@ -212,7 +212,7 @@ function rebuild_drupal_tags {
     fi
     pushd .
     cd ~/.vim/tags
-    ctags --PHP-kinds=+cf --exclude="\.svn" --langmap=php:.php.module.inc.install.lib -R -o $tagfile_name $root_dir
+    ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R -o $tagfile_name $root_dir
     popd
 }
 
