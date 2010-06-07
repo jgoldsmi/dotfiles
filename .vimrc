@@ -104,6 +104,9 @@ nmap <leader>nt :NERDTreeToggle<CR>
 nmap <leader>tl :TlistToggle<CR>
 nmap <leader>ff :FufTaggedFile<CR>
 nmap <leader>ft :FufTag<CR>
+" Extra tag helpers
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
