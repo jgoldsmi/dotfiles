@@ -204,16 +204,7 @@ alias d='dirs -v'
 
 
 function rebuild_drupal_tags {
-    local root_dir=$1
-    local tagfile_name=$2
-    if [[ -z $root_dir || -z $tagfile_name ]]; then
-        echo "Usage: rebuild_drupal_tags root_dir tagfile_name"
-        return 1
-    fi
-    pushd .
-    cd ~/.vim/tags
-    ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R -o $tagfile_name $root_dir
-    popd
+    ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
 }
 
 # Aliases for XAMPP
