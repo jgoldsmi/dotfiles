@@ -17,6 +17,7 @@ end
 desc "Deploy vim configs"
 task :deploy_vim_config do |t|
   cp '.vimrc', home_dir
+  cp '.gvimrc', home_dir
   cp_r '.vim', home_dir
 end
 
