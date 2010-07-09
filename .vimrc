@@ -50,6 +50,9 @@ set grepprg=ack-grep\ -a
 " C settings
 au FileType c setl cin ts=4 sts=4 sw=4 fo=crql
 
+" Java settings
+au FileType java setl cin ts=4 sw=4 sts=4 fo=crql
+
 " Python settings
 au FileType python setl sta ts=4 sw=4 sts=4 fo=crql
 let python_highlight_all = 1
