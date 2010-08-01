@@ -36,6 +36,8 @@ set wildmenu wildmode=list:longest
 autocmd BufEnter * lcd %:p:h "always change dir to file we're editing
 let loaded_matchparen = 1
 
+set statusline=%<%f\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
+
 " Restore file position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
