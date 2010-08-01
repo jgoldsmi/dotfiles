@@ -122,3 +122,6 @@ map <C-l> <C-W>l
 " Move between buffers
 map <silent> <C-left>  :bp<CR>
 map <silent> <C-right> :bn<CR>
+" Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
