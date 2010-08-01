@@ -107,8 +107,8 @@ endfunction
 " Custom mappings
 nmap <leader>nt :NERDTreeToggle<CR>
 nmap <leader>tl :TlistToggle<CR>
-nmap <leader>ff :FufTaggedFile<CR>
-nmap <leader>ft :FufTag<CR>
+nmap <leader>ft :FufTaggedFile<CR>
+nmap <leader>ff :FufFile **/<CR>
 " Extra tag helpers
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
