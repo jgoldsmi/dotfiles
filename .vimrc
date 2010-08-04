@@ -33,8 +33,6 @@ set t_Co=256
 colorscheme molokai
 set listchars=eol:¶,tab:»=,trail:·,extends:»,precedes:« list
 set wildmenu wildmode=list:longest
-autocmd BufEnter * lcd %:p:h "always change dir to file we're editing
-let loaded_matchparen = 1
 
 set statusline=%<%f\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
 
