@@ -202,6 +202,10 @@ alias exot=exit
 alias exut=exit
 alias d='dirs -v'
 
+function cdl {
+    cd $@; ls;
+}
+
 
 function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
