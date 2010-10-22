@@ -202,10 +202,23 @@ alias exot=exit
 alias exut=exit
 alias d='dirs -v'
 
+# Aliases for git
+alias gco="git checkout"
+alias gc="git commit"
+alias gca="git commit -a"
+alias gb="git branch"
+alias gba="git branch -a"
+alias ga="git add"
+alias gp="git push"
+alias gpr="git pull --rebase"
+alias gs="git status"
+alias gsu="pushd ./\`git rev-parse --show-cdup\` > /dev/null; git submodule update; popd > /dev/null"
+alias gm="git merge"
+alias grao="git remote add origin"
+
 function cdl {
     cd $@; ls;
 }
-
 
 function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
