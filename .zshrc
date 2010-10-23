@@ -14,7 +14,7 @@ promptinit
 # Aaron Toponce's ZSH prompt
 # License: in the public domain
 # Update: Oct 14, 2009
-function precmd {
+function my_precmd {
     # Get version control information for several version control backends
     autoload -Uz vcs_info; vcs_info
     zstyle ':vcs_info:*' formats ' %s:%b'
@@ -73,6 +73,8 @@ function precmd {
     # Set the xterm title
     print -Pn "\e]0;%n@%m: %~\a"
 }
+
+add-zsh-hook precmd my_precmd
 
 # If I am using vi keys, I want to know what mode I'm currently using.
 # zle-keymap-select is executed every time KEYMAP changes.
