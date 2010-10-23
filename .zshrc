@@ -11,13 +11,60 @@ bindkey -v
 # prompt stuff
 autoload -U promptinit
 promptinit
-# Aaron Toponce's ZSH prompt
-# License: in the public domain
-# Update: Oct 14, 2009
+
+# vcs_info settings
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn cvs hg
+zstyle ':vcs_info:git*:*' check-for-changes true
+zstyle ':vcs_info:git*+set-message:*' hooks git-st git-stash git-remotebranch
+
+# hash changes branch misc
+zstyle ':vcs_info:git*' formats "[%s|%b] %c%u %m"
+zstyle ':vcs_info:git*' actionformats "[%s|%b|%a] %c%u %m"
+
+# Show remote ref name and number of commits ahead-of or behind
+function +vi-git-st() {
+    local ahead behind
+    local -a gitstatus
+
+    # for git prior to 1.7
+    # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
+    ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
+    (( $ahead )) && gitstatus+=( "+${ahead}" )
+
+    # for git prior to 1.7
+    # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
+    behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
+    (( $behind )) && gitstatus+=( "-${behind}" )
+
+    hook_com[misc]+=${(j:/:)gitstatus}
+}
+
+# Show count of stashed changes
+function +vi-git-stash() {
+    local -a stashes
+
+    if [[ -s ${hook_com[base]}/.git/refs/stash ]] ; then
+        stashes=$(git stash list 2>/dev/null | wc -l)
+        hook_com[misc]+=" (${stashes} stashed)"
+    fi
+}
+
+function +vi-git-remotebranch() {
+    local remote
+
+    # Are we on a remote-tracking branch?
+    remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
+        --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
+
+    if [[ -n ${remote} ]] ; then
+        hook_com[branch]="${hook_com[branch]} [${remote}]"
+    fi
+}
+
 function my_precmd {
     # Get version control information for several version control backends
-    autoload -Uz vcs_info; vcs_info
-    zstyle ':vcs_info:*' formats ' %s:%b'
+    vcs_info
     PR_VCS="${vcs_info_msg_0_}"
 
     # The following 9 lines of code comes directly from Phil!'s ZSH prompt
@@ -111,7 +158,7 @@ PROMPT='${PR_BOLD_RED}<${PR_BOLD_DEFAULT} \
 
 ${PR_BOLD_RED}<\
 ${PR_BOLD_DEFAULT} %n@%m${PR_RED}|${PR_BOLD_DEFAULT}%h${PR_BOLD_RED}\
-%(?.. exit:%?)${PR_BOLD_BLUE}${PR_SCREEN}${PR_JOBS}${PR_VCS}${PR_BATTERY}\
+%(?.. exit:%?)${PR_BOLD_BLUE}${PR_SCREEN}${PR_JOBS} ${PR_VCS}${PR_BATTERY}\
 ${PR_BOLD_BLUE}${VIMODE}\
 
 ${PR_BOLD_GREEN}>\
