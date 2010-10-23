@@ -6,7 +6,7 @@ SAVEHIST=10000
 setopt hist_ignore_dups hist_append share_history
 setopt autocd extendedglob
 unsetopt beep
-bindkey -v
+bindkey -e
 
 # prompt stuff
 autoload -U promptinit
