@@ -85,27 +85,26 @@ zle-keymap-select() {
 
 zle -N zle-keymap-select
 
-function setprompt {
-    # Need this, so the prompt will work
-    setopt prompt_subst
+# Need this, so the prompt will work
+setopt prompt_subst
 
-    # let's load colors into our environment, then set them
-    autoload colors
+# let's load colors into our environment, then set them
+autoload colors
 
-    if [[ "$terminfo[colors]" -ge 8 ]]; then
-        colors
-    fi
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+    colors
+fi
 
-    # The variables are wrapped in %{%}. This should be the case for every
-    # variable that does not contain space.
-    for COLOR in RED GREEN YELLOW BLUE BLACK; do
-        eval PR_$COLOR='%{$fg_no_bold[${(L)COLOR}]%}'
-        eval PR_BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
-    done
-    eval PR_BOLD_DEFAULT='%{$fg_bold[default]%}'
+# The variables are wrapped in %{%}. This should be the case for every
+# variable that does not contain space.
+for COLOR in RED GREEN YELLOW BLUE BLACK; do
+    eval PR_$COLOR='%{$fg_no_bold[${(L)COLOR}]%}'
+    eval PR_BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+done
+eval PR_BOLD_DEFAULT='%{$fg_bold[default]%}'
 
-    # Finally, let's set the prompt
-    PROMPT='${PR_BOLD_RED}<${PR_BOLD_DEFAULT} \
+# Finally, let's set the prompt
+PROMPT='${PR_BOLD_RED}<${PR_BOLD_DEFAULT} \
 %D{%Y-%m-%d %R.%S}${PR_RED}|${PR_PWDCOLOR}%${PR_PWDLEN}<...<%~%<<\
 
 ${PR_BOLD_RED}<\
@@ -116,13 +115,10 @@ ${PR_BOLD_BLUE}${VIMODE}\
 ${PR_BOLD_GREEN}>\
 %{${reset_color}%} '
 
-    # Of course we need a matching continuation prompt
-    PROMPT2='${PR_BOLD_BLACK}>${PR_GREEN}>${PR_BOLD_GREEN}>\
+# Of course we need a matching continuation prompt
+PROMPT2='${PR_BOLD_BLACK}>${PR_GREEN}>${PR_BOLD_GREEN}>\
 ${PR_BOLD_DEFAULT} %_ ${PR_BOLD_BLACK}>${PR_GREEN}>\
 ${PR_BOLD_GREEN}>%{${reset_color}%} '
-}
-
-setprompt
 
 # colorful listings
 zmodload -i zsh/complist
