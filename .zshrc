@@ -264,9 +264,8 @@ alias gsu="pushd ./\`git rev-parse --show-cdup\` > /dev/null; git submodule upda
 alias gm="git merge"
 alias grao="git remote add origin"
 
-function cdl {
-    cd $@; ls;
-}
+function cdl { cd $@; ls; }
+function mdc { mkdir "$1" && cd "$1"; }
 
 function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
