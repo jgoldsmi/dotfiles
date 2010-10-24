@@ -263,6 +263,14 @@ alias gs="git status"
 alias gsu="pushd ./\`git rev-parse --show-cdup\` > /dev/null; git submodule update; popd > /dev/null"
 alias gm="git merge"
 alias grao="git remote add origin"
+function gt {
+    #Set up tracking for current branch
+    local branch_name remote
+    remote=${1:-origin}
+    branch_name=$(git branch --no-color 2> /dev/null \
+        | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    git branch --set-upstream $branch_name $remote/$branch_name
+}
 
 function cdl { cd $@; ls; }
 function mdc { mkdir "$1" && cd "$1"; }
