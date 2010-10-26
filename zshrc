@@ -4,6 +4,9 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups hist_append share_history
+
+#Other options
+[[ -e /usr/share/terminfo/x/xterm-256color ]] && export TERM=xterm-256color
 setopt autocd extendedglob
 unsetopt beep
 bindkey -e
