@@ -22,8 +22,8 @@ zstyle ':vcs_info:git*:*' check-for-changes true
 zstyle ':vcs_info:git*+set-message:*' hooks git-st git-stash git-remotebranch
 
 # hash changes branch misc
-zstyle ':vcs_info:git*' formats "[%s|%b] %c%u %m"
-zstyle ':vcs_info:git*' actionformats "[%s|%b|%a] %c%u %m"
+zstyle ':vcs_info:*' formats "[%s|%b] %c%u %m"
+zstyle ':vcs_info:*' actionformats "[%s|%b|%a] %c%u %m"
 
 # Show remote ref name and number of commits ahead-of or behind
 function +vi-git-st() {
