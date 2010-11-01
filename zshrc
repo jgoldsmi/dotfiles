@@ -182,6 +182,7 @@ ${PR_BOLD_GREEN}>%{${reset_color}%} '
 zmodload -i zsh/complist
 eval `dircolors -b`
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:::::' completer _complete _approximate
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*' menu select
