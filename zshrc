@@ -7,12 +7,12 @@ setopt hist_ignore_dups hist_append share_history
 
 #Other options
 terminfo_dirs=(/lib/terminfo /usr/share/terminfo)
-for dir in $terminfo_dirs; do
-    if [[ -e $dir/x/xterm-256color ]]; then
-        export TERM=xterm-256color
-        break
-    fi
-done
+# for dir in $terminfo_dirs; do
+    # if [[ -e $dir/x/xterm-256color ]]; then
+        # export TERM=xterm-256color
+        # break
+    # fi
+# done
 setopt autocd extendedglob
 unsetopt beep
 bindkey -e
