@@ -267,6 +267,7 @@ alias ack='ack-grep'
 alias exot=exit
 alias exut=exit
 alias d='dirs -v'
+alias ec='emacsclient -n'
 
 # Aliases for git
 alias gco="git checkout"
