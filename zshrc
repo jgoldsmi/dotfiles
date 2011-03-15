@@ -271,14 +271,14 @@ alias ec='emacsclient -n'
 
 # Aliases for git
 alias gco="git checkout"
-alias gc="git commit"
-alias gca="git commit -a"
+alias gc="git commit -v"
+alias gca="git commit -v -a"
 alias gb="git branch"
 alias gba="git branch -a"
 alias ga="git add"
 alias gp="git push"
 alias gpr="git pull --rebase"
-alias gs="git status"
+alias gst="git status"
 alias gsu="pushd ./\`git rev-parse --show-cdup\` > /dev/null; git submodule update; popd > /dev/null"
 alias gm="git merge"
 alias grao="git remote add origin"
