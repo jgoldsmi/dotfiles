@@ -126,8 +126,7 @@ function my_precmd {
         fi
     fi
 
-    # Set the xterm title
-    print -Pn "\e]0;%n@%m: %~\a"
+    print -Pn "\e]0;%n@%m: %~\a" # Set the xterm title
     print -Pn "\ekzsh\e\\" #reset screen hardstatus
 }
 
@@ -276,8 +275,15 @@ alias gg='ack-grep'
 alias ack='ack-grep'
 alias exot=exit
 alias exut=exit
-alias d='dirs -v'
 alias ec='emacsclient -n'
+
+# Push and pop directories on directory stack
+setopt auto_name_dirs
+setopt auto_pushd
+setopt pushd_ignore_dups
+alias d='dirs -v'
+alias pu='pushd'
+alias po='popd'
 
 # Aliases for git
 alias gco="git checkout"
@@ -302,7 +308,7 @@ function gt {
 }
 
 function cdl { cd $@; ls; }
-function mdc { mkdir "$1" && cd "$1"; }
+function mdc { mkdir -p "$1" && cd "$1"; }
 
 function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
