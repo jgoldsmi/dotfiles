@@ -128,9 +128,19 @@ function my_precmd {
 
     # Set the xterm title
     print -Pn "\e]0;%n@%m: %~\a"
+    print -Pn "\ekzsh\e\\" #reset screen hardstatus
 }
 
 add-zsh-hook precmd my_precmd
+
+function my_preexec {
+  local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]} #cmd name only, or if this is sudo or ssh, the next cmd
+  if [[ "$TERM" =~ "^screen" ]]; then 
+    print -Pn "\ek$CMD\e\\" #set screen hardstatus, usually truncated at 20 chars
+  fi
+}
+
+add-zsh-hook preexec my_preexec
 
 # If I am using vi keys, I want to know what mode I'm currently using.
 # zle-keymap-select is executed every time KEYMAP changes.
