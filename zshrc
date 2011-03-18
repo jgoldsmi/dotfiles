@@ -127,16 +127,20 @@ function my_precmd {
     fi
 
     print -Pn "\e]0;%n@%m: %~\a" # Set the xterm title
-    print -Pn "\ekzsh\e\\" #reset screen hardstatus
+    if [[ "$TERM" =~ "^screen" ]]; then
+        print -Pn "\ekzsh:%3~\e\\" #reset screen hardstatus
+    fi
 }
 
 add-zsh-hook precmd my_precmd
 
 function my_preexec {
-  local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]} #cmd name only, or if this is sudo or ssh, the next cmd
-  if [[ "$TERM" =~ "^screen" ]]; then 
-    print -Pn "\ek$CMD\e\\" #set screen hardstatus, usually truncated at 20 chars
-  fi
+    emulate -L zsh
+    local -a cmd; cmd=(${(z)1})
+    local CMD=$cmd[1]:t
+    if [[ "$TERM" =~ "^screen" ]]; then
+        print -Pn "\ek$CMD:%3~\e\\" #set screen hardstatus, usually truncated at 20 chars
+    fi
 }
 
 add-zsh-hook preexec my_preexec
