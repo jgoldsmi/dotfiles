@@ -231,10 +231,11 @@ zle -N rationalize-dot
 bindkey . rationalize-dot
 
 # aliases
-alias mv='nocorrect mv'       # no spelling correction on mv
-alias cp='nocorrect cp'
-alias mkdir='nocorrect mkdir'
 alias apt-cache='nocorrect apt-cache'
+alias cp='nocorrect cp'
+alias ln='nocorrect ln'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'       # no spelling correction on mv
 alias j=jobs
 if ls -F --color=auto >&/dev/null; then
   alias ls="ls --color=auto -F"
@@ -252,6 +253,7 @@ alias ack='ack-grep'
 alias exot=exit
 alias exut=exit
 alias ec='emacsclient -n'
+alias tmux='tmux -2'
 
 # Push and pop directories on directory stack
 setopt auto_name_dirs
