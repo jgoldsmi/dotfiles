@@ -76,4 +76,9 @@
 *color7:                S_base2
 *color15:               S_base3
 
+xterm*font:             -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
+rxvt.font:              -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
+rxvt.scrollBar:         False
+URxvt.scrollBar:        False
+
 Emacs.useXIM: on
