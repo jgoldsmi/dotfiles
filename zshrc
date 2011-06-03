@@ -214,6 +214,7 @@ zstyle ':completion:*' hosts $_myhosts
 autoload -U compinit
 compinit
 
+setopt ignoreeof
 setopt correctall
 setopt autocd
 setopt auto_resume
