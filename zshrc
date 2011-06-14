@@ -302,14 +302,6 @@ function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
 }
 
-# Aliases for XAMPP
-alias lampstart='sudo /opt/lampp/lampp start'
-alias lampstop='sudo /opt/lampp/lampp stop'
-alias lamprestart='sudo /opt/lampp/lampp restart'
-# Aliases for Tomcat
-alias tomcatstart='/opt/apache-tomcat/bin/startup.sh'
-alias tomcatstop='/opt/apache-tomcat/bin/shutdown.sh'
-
 
 export PATH=~/bin:/opt/lampp/bin:$PATH
 # Vars for Go
