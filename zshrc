@@ -303,12 +303,6 @@ function rebuild_drupal_tags {
 }
 
 
-export PATH=~/bin:/opt/lampp/bin:$PATH
-# Vars for Go
-export GOROOT=~/src/go
-export GOOS=linux
-export GOARCH=amd64
-export GOBIN=~/bin
 # Vars for CVS
 export EDITOR=vim
 export VISUAL=vim
