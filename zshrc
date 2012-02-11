@@ -133,7 +133,7 @@ function my_precmd {
 
     # set a simple variable to show when in tmux
     if [[ -n "${TMUX}" ]]; then
-        PR_TMUX=" tmux:$(tmux display-message -p '#I')"
+        PR_TMUX=" tmux:$(tmux display-message -p '#I:#P')"
     else
         PR_TMUX=""
     fi
