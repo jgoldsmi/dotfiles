@@ -254,7 +254,7 @@ alias ack='ack-grep'
 alias exot=exit
 alias exut=exit
 alias ec='emacsclient -n'
-alias tmux='tmux -2'
+alias tmux='TERM=xterm-256color tmux -2'
 
 # Push and pop directories on directory stack
 setopt auto_name_dirs
