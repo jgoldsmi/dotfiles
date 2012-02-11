@@ -131,6 +131,13 @@ function my_precmd {
         PR_SCREEN=""
     fi
 
+    # set a simple variable to show when in tmux
+    if [[ -n "${TMUX}" ]]; then
+        PR_TMUX=" tmux:$(tmux display-message -p '#I')"
+    else
+        PR_TMUX=""
+    fi
+
     # check if jobs are executing
     if [[ ${#jobstates} -gt 0 ]]; then
         PR_JOBS=" jobs:%j"
@@ -209,7 +216,7 @@ PROMPT='${PR_BOLD_RED}<${PR_BOLD_DEFAULT} \
 
 ${PR_BOLD_RED}<\
 ${PR_BOLD_DEFAULT} %n@%m${PR_RED}|${PR_BOLD_DEFAULT}%h${PR_BOLD_RED}\
-%(?.. exit:%?)${PR_BOLD_BLUE}${PR_SCREEN}${PR_JOBS} ${PR_VCS}${PR_BATTERY}\
+%(?.. exit:%?)${PR_BOLD_BLUE}${PR_SCREEN}${PR_TMUX}${PR_JOBS} ${PR_VCS}${PR_BATTERY}\
 ${PR_BOLD_BLUE}${VIMODE}\
 
 ${PR_BOLD_GREEN}>\
