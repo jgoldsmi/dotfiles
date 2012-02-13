@@ -7,7 +7,7 @@ setopt hist_ignore_dups hist_append share_history
 
 setopt autocd extendedglob
 unsetopt beep
-bindkey -e
+bindkey -v
 
 # prompt stuff
 autoload -U promptinit
@@ -191,6 +191,11 @@ zle-keymap-select() {
 }
 
 zle -N zle-keymap-select
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
 
 # Need this, so the prompt will work
 setopt prompt_subst
