@@ -358,7 +358,8 @@ export VISUAL=vim
 export PAGER=less
 export BROWSER=firefox
 
-export PATH=$PATH:~/.gem/ruby/1.8/bin
+export GEM_HOME=~/.gem
+export PATH=$PATH:~/.gem/bin
 
 if [[ -f ~/.zshrc-private ]]; then
     source ~/.zshrc-private
