@@ -22,14 +22,18 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st git-stash git-remotebranch
 zstyle ':vcs_info:hg*:*' check-for-changes true
 zstyle ':vcs_info:hg*:*' get-bookmarks true
 zstyle ':vcs_info:hg*+set-message:*' hooks hg-storerev hg-branchhead
+zstyle ':vcs_info:hg*:*' get-revision true
 zstyle ':vcs_info:hg*:*' get-mq true
 zstyle ':vcs_info:hg*:*' get-unapplied true
 zstyle ':vcs_info:hg*:*' patch-format "mq(%g):%n/%c %p"
 zstyle ':vcs_info:hg*:*' nopatch-format "mq(%g):%n/%c %p"
 
+zstyle ':vcs_info:hg*:*' hgrevformat "%r" # only show local rev.
+zstyle ':vcs_info:hg*:*' branchformat "%b" # only show branch
+
 # hash changes branch misc
-zstyle ':vcs_info:*' formats "[%s|%b] %c%u %m"
-zstyle ':vcs_info:*' actionformats "[%s|%b|%a] %c%u %m"
+zstyle ':vcs_info:*' formats "[%s|%b] %c%i%u %m"
+zstyle ':vcs_info:*' actionformats "[%s|%b|%a] %c%i%u %m"
 
 # Show remote ref name and number of commits ahead-of or behind
 function +vi-git-st() {
