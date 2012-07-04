@@ -355,6 +355,9 @@ function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
 }
 
+function ifsource {
+    [[ -f $1 ]] && source $1
+}
 
 # Vars for CVS
 export EDITOR=vim
@@ -365,6 +368,5 @@ export BROWSER=firefox
 export GEM_HOME=~/.gem
 export PATH=~/bin:$PATH:~/.gem/bin
 
-if [[ -f ~/.zshrc-private ]]; then
-    source ~/.zshrc-private
-fi
+ifsource ~/.zshrc-private
+ifsource /etc/zsh_command_not_found
