@@ -363,7 +363,7 @@ export PAGER=less
 export BROWSER=firefox
 
 export GEM_HOME=~/.gem
-export PATH=$PATH:~/.gem/bin
+export PATH=~/bin:$PATH:~/.gem/bin
 
 if [[ -f ~/.zshrc-private ]]; then
     source ~/.zshrc-private
