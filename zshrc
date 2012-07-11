@@ -15,7 +15,7 @@ promptinit
 
 # vcs_info settings
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn cvs hg
+zstyle ':vcs_info:*' enable git svn cvs hg bzr
 zstyle ':vcs_info:git*:*' check-for-changes true
 zstyle ':vcs_info:git*+set-message:*' hooks git-st git-stash git-remotebranch
 
