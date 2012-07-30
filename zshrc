@@ -291,6 +291,7 @@ alias ln='nocorrect ln'
 alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias j=jobs
+alias sl=ls
 if ls -F --color=auto >&/dev/null; then
   alias ls="ls --color=auto -F"
 else
