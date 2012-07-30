@@ -371,3 +371,6 @@ export PATH=~/bin:$PATH:~/.gem/bin
 
 ifsource ~/.zshrc-private
 ifsource /etc/zsh_command_not_found
+ifsource ~/.rvm/scripts/rvm
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
