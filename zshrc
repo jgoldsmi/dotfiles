@@ -238,7 +238,9 @@ ${PR_BOLD_GREEN}>%{${reset_color}%} '
 
 # colorful listings
 zmodload -i zsh/complist
-eval `dircolors -b`
+if type dircolors > /dev/null 2>&1; then
+    eval `dircolors -b`
+fi
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
@@ -295,7 +297,7 @@ alias sl=ls
 if ls -F --color=auto >&/dev/null; then
   alias ls="ls --color=auto -F"
 else
-  alias ls="ls -F"
+  alias ls="ls -G -F"
 fi
 alias ll="ls -l"
 alias md='mkdir -p'
