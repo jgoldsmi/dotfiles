@@ -126,7 +126,7 @@ function my_precmd {
         PR_PWDCOLOR="${PR_BOLD_DEFAULT}"
     else
         PR_PWDCOLOR="${PR_BOLD_YELLOW}"
-    fi  
+    fi
 
     # set a simple variable to show when in screen
     if [[ -n "${WINDOW}" ]]; then
