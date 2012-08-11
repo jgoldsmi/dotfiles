@@ -305,8 +305,10 @@ alias rd='rmdir'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias :q=exit
-alias gg='ack-grep'
-alias ack='ack-grep'
+if which ack-grep > /dev/null; then
+    alias ack='ack-grep'
+fi
+alias gg='ack'
 alias exot=exit
 alias exut=exit
 alias ec='emacsclient -n'
