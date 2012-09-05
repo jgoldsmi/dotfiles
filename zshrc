@@ -332,18 +332,18 @@ alias 8='cd +8'
 alias 9='cd +9'
 
 # Aliases for git
-alias gco="git checkout"
-alias gc="git commit -v"
-alias gca="git commit -v -a"
-alias gb="git branch"
-alias gba="git branch -a"
 alias ga="git add"
+alias gba="git branch -a"
+alias gb="git branch"
+alias gca="git commit -v -a"
+alias gc="git commit -v"
+alias gco="git checkout"
+alias gm="git merge"
 alias gp="git push"
 alias gpr="git pull --rebase"
+alias grao="git remote add origin"
 alias gst="git status"
 alias gsu="pushd ./\`git rev-parse --show-cdup\` > /dev/null; git submodule update; popd > /dev/null"
-alias gm="git merge"
-alias grao="git remote add origin"
 function gt {
     #Set up tracking for current branch
     local branch_name remote
