@@ -305,7 +305,7 @@ alias rd='rmdir'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias :q=exit
-if which ack-grep > /dev/null; then
+if which ack-grep &> /dev/null; then
     alias ack='ack-grep'
 fi
 alias gg='ack'
