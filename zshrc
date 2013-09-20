@@ -1,5 +1,6 @@
 #~/.zshrc
 COMPLETION_WAITING_DOTS=true
+bindkey -v
 
 # Bootstrap antigen
 function update_scripts {
@@ -59,54 +60,22 @@ setopt hist_ignore_dups hist_append share_history extended_history
 
 setopt autocd extendedglob
 unsetopt beep
-bindkey -v
-
-# prompt stuff
-autoload -U promptinit
-promptinit
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
-# Need this, so the prompt will work
-setopt prompt_subst
-
-# let's load colors into our environment, then set them
-autoload colors
-
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-    colors
-fi
-
-# colorful listings
-zmodload -i zsh/complist
-if type dircolors > /dev/null 2>&1; then
-    eval `dircolors -b`
-fi
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-zstyle ':completion:*' menu select
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
 # Don't complete CVS directories
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
 
 
-# zmv "programmable rename"
-# autoload -U zmv
-
-autoload -U compinit
-compinit
-
 setopt ignoreeof
-setopt correctall
-setopt autocd
 setopt auto_resume
-setopt extendedglob
 
 # Quick change directories
 function rationalize-dot {
@@ -123,8 +92,6 @@ bindkey . rationalize-dot
 alias apt-cache='nocorrect apt-cache'
 alias cp='nocorrect cp'
 alias ln='nocorrect ln'
-alias mkdir='nocorrect mkdir'
-alias mv='nocorrect mv'       # no spelling correction on mv
 alias j=jobs
 alias sl=ls
 if ls -F --color=auto >&/dev/null; then
@@ -133,10 +100,6 @@ else
   alias ls="ls -G -F"
 fi
 alias ll="ls -l"
-alias md='mkdir -p'
-alias rd='rmdir'
-alias cd..='cd ..'
-alias ..='cd ..'
 alias :q=exit
 if which ack-grep &> /dev/null; then
     alias ack='ack-grep'
@@ -144,11 +107,7 @@ fi
 alias gg='ack'
 alias exot=exit
 alias exut=exit
-alias ec='emacsclient -n'
 alias tmux='TERM=xterm-256color tmux -2'
-
-function cdl { cd $@; ls; }
-function mdc { mkdir -p "$1" && cd "$1"; }
 
 function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
