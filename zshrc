@@ -10,6 +10,7 @@ source ~/dotfiles/antigen.zsh
 antigen use oh-my-zsh
 
 # Plugins from oh-my-zsh
+antigen bundle brew
 antigen bundle git
 
 # Plugins from zsh-users
