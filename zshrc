@@ -6,6 +6,11 @@ if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
 fi
 source ~/dotfiles/antigen.zsh
 
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen apply
+
 # History options
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -393,7 +398,6 @@ export PATH=~/bin:$PATH:~/.gem/bin
 ifsource ~/.zshrc-private
 ifsource /etc/zsh_command_not_found
 ifsource ~/.rvm/scripts/rvm
-ifsource /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ -d "/usr/local/share/zsh-completions" ]]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
