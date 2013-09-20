@@ -2,8 +2,12 @@
 COMPLETION_WAITING_DOTS=true
 
 # Bootstrap antigen
-if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
+function update_scripts {
     curl https://raw.github.com/zsh-users/antigen/master/antigen.zsh > ~/dotfiles/antigen.zsh
+}
+
+if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
+    update_scripts
 fi
 source ~/dotfiles/antigen.zsh
 
@@ -18,6 +22,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions src
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle sharat87/zsh-vim-mode
+antigen bundle rupa/z
 
 antigen theme ys
 
@@ -36,6 +41,12 @@ bindkey -M emacs '^N' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+# Set up for z
+add-zsh-hook precmd _z_precmd
+function _z_precmd {
+_z --add "$PWD"
+}
 
 # History options
 HISTFILE=~/.histfile
