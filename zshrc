@@ -85,7 +85,6 @@ zmodload -i zsh/complist
 if type dircolors > /dev/null 2>&1; then
     eval `dircolors -b`
 fi
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
