@@ -17,6 +17,7 @@ antigen use oh-my-zsh
 antigen bundle brew
 antigen bundle extract
 antigen bundle git
+antigen bundle git-extras
 antigen bundle rvm
 
 # Plugins from zsh-users
