@@ -3,7 +3,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt hist_ignore_dups hist_append share_history
+setopt hist_ignore_dups hist_append share_history extended_history
 
 setopt autocd extendedglob
 unsetopt beep
@@ -366,6 +366,14 @@ function ifsource {
     [[ -f $1 ]] && source $1
 }
 
+function jsonpp {
+    if [[ -f $1 ]]; then
+        cat $1 | python -m json.tool
+    else
+        echo "$@" | python -m json.tool
+    fi
+}
+
 # Vars for CVS
 export EDITOR=vim
 export VISUAL=vim
@@ -378,3 +386,8 @@ export PATH=~/bin:$PATH:~/.gem/bin
 ifsource ~/.zshrc-private
 ifsource /etc/zsh_command_not_found
 ifsource ~/.rvm/scripts/rvm
+ifsource /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ -d "/usr/local/share/zsh-completions" ]]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
