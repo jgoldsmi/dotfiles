@@ -1,4 +1,11 @@
 #~/.zshrc
+
+# Bootstrap antigen
+if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
+    curl https://raw.github.com/zsh-users/antigen/master/antigen.zsh > ~/dotfiles/antigen.zsh
+fi
+source ~/dotfiles/antigen.zsh
+
 # History options
 HISTFILE=~/.histfile
 HISTSIZE=10000
