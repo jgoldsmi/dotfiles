@@ -1,4 +1,5 @@
 #~/.zshrc
+COMPLETION_WAITING_DOTS=true
 
 # Bootstrap antigen
 if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
@@ -78,13 +79,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # Don't complete CVS directories
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
-function expand-or-complete-with-dots {
-  echo -n "\e[31m...\e[0m"
-  zle expand-or-complete
-  zle redisplay
-}
-zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
+
 # completion for ssh known_hosts
 local _myhosts
 _myhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
