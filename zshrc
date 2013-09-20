@@ -149,23 +149,6 @@ alias exut=exit
 alias ec='emacsclient -n'
 alias tmux='TERM=xterm-256color tmux -2'
 
-# Push and pop directories on directory stack
-setopt auto_name_dirs
-setopt auto_pushd
-setopt pushd_ignore_dups
-alias d='dirs -v'
-alias pu='pushd'
-alias po='popd'
-alias 1='cd -'
-alias 2='cd +2'
-alias 3='cd +3'
-alias 4='cd +4'
-alias 5='cd +5'
-alias 6='cd +6'
-alias 7='cd +7'
-alias 8='cd +8'
-alias 9='cd +9'
-
 function cdl { cd $@; ls; }
 function mdc { mkdir -p "$1" && cd "$1"; }
 
