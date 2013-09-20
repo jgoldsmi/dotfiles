@@ -6,6 +6,7 @@ if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
 fi
 source ~/dotfiles/antigen.zsh
 
+antigen bundle git
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
@@ -342,30 +343,6 @@ alias 6='cd +6'
 alias 7='cd +7'
 alias 8='cd +8'
 alias 9='cd +9'
-
-# Aliases for git
-alias ga="git add"
-alias gba="git branch -a"
-alias gb="git branch"
-alias gca="git commit -v -a"
-alias gc="git commit -v"
-alias gco="git checkout"
-alias gdc="git diff --cached"
-alias gd="git diff"
-alias gm="git merge"
-alias gp="git push"
-alias gpr="git pull --rebase"
-alias grao="git remote add origin"
-alias gst="git status"
-alias gsu="pushd ./\`git rev-parse --show-cdup\` > /dev/null; git submodule update; popd > /dev/null"
-function gt {
-    #Set up tracking for current branch
-    local branch_name remote
-    remote=${1:-origin}
-    branch_name=$(git branch --no-color 2> /dev/null \
-        | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-    git branch --set-upstream $branch_name $remote/$branch_name
-}
 
 function cdl { cd $@; ls; }
 function mdc { mkdir -p "$1" && cd "$1"; }
