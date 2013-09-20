@@ -15,8 +15,9 @@ antigen bundle git
 
 # Plugins from zsh-users
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-completions src
 antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle sharat87/zsh-vim-mode
 
 antigen theme ys
 
