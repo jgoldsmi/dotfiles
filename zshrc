@@ -95,10 +95,6 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
 
-# completion for ssh known_hosts
-local _myhosts
-_myhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
-zstyle ':completion:*' hosts $_myhosts
 
 # zmv "programmable rename"
 # autoload -U zmv
