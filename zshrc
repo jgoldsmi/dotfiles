@@ -16,6 +16,7 @@ antigen use oh-my-zsh
 # Plugins from oh-my-zsh
 antigen bundle brew
 antigen bundle git
+antigen bundle rvm
 
 # Plugins from zsh-users
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -179,8 +180,3 @@ export PATH=~/bin:$PATH:~/.gem/bin
 
 ifsource ~/.zshrc-private
 ifsource /etc/zsh_command_not_found
-ifsource ~/.rvm/scripts/rvm
-
-if [[ -d "/usr/local/share/zsh-completions" ]]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
