@@ -6,11 +6,31 @@ if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
 fi
 source ~/dotfiles/antigen.zsh
 
+antigen use oh-my-zsh
+
+# Plugins from oh-my-zsh
 antigen bundle git
-# Syntax highlighting bundle.
+
+# Plugins from zsh-users
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
 
 antigen apply
+
+# Keybindings for zsh-history-substring-search
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # History options
 HISTFILE=~/.histfile
