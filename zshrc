@@ -28,7 +28,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle sharat87/zsh-vim-mode
 antigen bundle rupa/z
 
-antigen theme ys
+antigen theme sunrise
 
 antigen apply
 
