@@ -15,12 +15,14 @@ source ~/dotfiles/antigen.zsh
 antigen use oh-my-zsh
 
 # Plugins from oh-my-zsh
-antigen bundle brew
+if [[ $(uname) == 'Darwin' ]]; then
+    antigen bundle brew
+    antigen bundle osx
+fi
 antigen bundle extract
 antigen bundle git
 antigen bundle git-extras
 antigen bundle npm
-antigen bundle osx
 antigen bundle perl
 antigen bundle pip
 antigen bundle rvm
