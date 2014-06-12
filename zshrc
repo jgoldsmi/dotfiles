@@ -22,11 +22,7 @@ fi
 antigen bundle extract
 antigen bundle git
 antigen bundle git-extras
-antigen bundle npm
-antigen bundle perl
 antigen bundle pip
-antigen bundle rvm
-antigen bundle taskwarrior
 
 # Plugins from zsh-users
 antigen bundle zsh-users/zsh-syntax-highlighting
