@@ -4,7 +4,7 @@ bindkey -v
 
 # Bootstrap antigen
 function update_scripts {
-    curl https://raw.github.com/zsh-users/antigen/master/antigen.zsh > ~/dotfiles/antigen.zsh
+    curl https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/dotfiles/antigen.zsh
 }
 
 if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
