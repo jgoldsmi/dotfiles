@@ -2,38 +2,38 @@
 COMPLETION_WAITING_DOTS=true
 bindkey -v
 
-# Bootstrap antigen
-function update_scripts {
-    curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/dotfiles/antigen.zsh
-}
-
-if [[ ! -e ~/dotfiles/antigen.zsh ]]; then
-    update_scripts
+if [[ ! -d ~/.zplug ]];then
+    git clone https://github.com/b4b4r07/zplug ~/.zplug
 fi
-source ~/dotfiles/antigen.zsh
 
-antigen use oh-my-zsh
+source ~/.zplug/init.zsh
 
-# Plugins from oh-my-zsh
-if [[ $(uname) == 'Darwin' ]]; then
-    antigen bundle brew
-    antigen bundle osx
-fi
-antigen bundle extract
-antigen bundle git
-antigen bundle git-extras
-antigen bundle pip
+# Oh-my-zsh plugins
+zplug "plugins/brew", from:oh-my-zsh, if:"[ $(uname) == 'Darwin' ]"
+zplug "plugins/osx", from:oh-my-zsh, if:"[ $(uname) == 'Darwin' ]"
+zplug "lib/completion", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/git-extras", from:oh-my-zsh
+zplug "plugins/heroku", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "greymd/docker-zsh-completion"
 
-# Plugins from zsh-users
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions src
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle sharat87/zsh-vim-mode
-antigen bundle rupa/z
+# github repos
+# zplug "zsh-users/zsh-syntax-highlighting"
+ENHANCD_FILTER=fzy:fzf; export ENHANCD_FILTER
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "zdharma/fast-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "b4b4r07/zsh-vimode-visual", use:"*.zsh", defer:3
+zplug "sharat87/zsh-vim-mode"
+zplug "supercrabtree/k"
+zplug "b4b4r07/git-open", as:command, at:patch-1
+# Theme
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
-antigen theme sunrise
-
-antigen apply
+zplug load
 
 # Keybindings for zsh-history-substring-search
 # bind UP and DOWN arrow keys
@@ -49,12 +49,6 @@ bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-# Set up for z
-add-zsh-hook precmd _z_precmd
-function _z_precmd {
-_z --add "$PWD"
-}
-
 # History options
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -69,27 +63,16 @@ bindkey -M vicmd v edit-command-line
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-# Don't complete CVS directories
-zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
-zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
+# zstyle ':completion:*' completer _expand _complete _correct _approximate
+# zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+# zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+# # Don't complete CVS directories
+# zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
+# zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
 
 
 setopt ignoreeof
 setopt auto_resume
-
-# Quick change directories
-function rationalize-dot {
-    if [[ $LBUFFER = *.. ]]; then
-        LBUFFER+=/..
-    else
-        LBUFFER+=.
-    fi
-}
-zle -N rationalize-dot
-bindkey . rationalize-dot
 
 # aliases
 alias apt-cache='nocorrect apt-cache'
@@ -111,6 +94,13 @@ alias gg='ack'
 alias exot=exit
 alias exut=exit
 alias tmux='TERM=xterm-256color tmux -2'
+alias ec="emacsclient -n"
+alias tasks='git grep -EI "TODO|FIXME|XXX"'
+
+function take {
+    mkdir -p $1 && cd $1
+}
+
 
 function rebuild_drupal_tags {
     ctags --PHP-kinds=+cf --exclude="\.svn" --exclude="build" --langmap=php:.php.module.inc.install.lib -R $(pwd)
@@ -120,22 +110,17 @@ function ifsource {
     [[ -f $1 ]] && source $1
 }
 
-function jsonpp {
-    if [[ -f $1 ]]; then
-        cat $1 | python -m json.tool
-    else
-        echo "$@" | python -m json.tool
-    fi
-}
 
 # Vars for CVS
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export PAGER=less
-export BROWSER=firefox
+export BROWSER=chrome
 
 export GEM_HOME=~/.gem
 export PATH=~/bin:$PATH:~/.gem/bin
 
 ifsource ~/.zshrc-private
 ifsource /etc/zsh_command_not_found
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
