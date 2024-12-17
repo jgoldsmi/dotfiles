@@ -3,7 +3,7 @@ COMPLETION_WAITING_DOTS=true
 bindkey -v
 
 if [[ ! -d ~/.zplug ]];then
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
+    git clone https://github.com/zplug/zplug ~/.zplug
 fi
 
 source ~/.zplug/init.zsh
