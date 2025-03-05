@@ -9,8 +9,12 @@ fi
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
   PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+# asdf settings
+PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH
-
+if command -v asdf 2>&1 >/dev/null; then
+  . <(asdf completion bash)
+fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
