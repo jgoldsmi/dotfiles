@@ -14,8 +14,10 @@ local function scheme_for_appearance(appearance)
 	end
 end
 -- For example, changing the initial geometry for new windows:
-config.initial_cols = 120
-config.initial_rows = 28
+config.initial_cols = 200
+config.initial_rows = 80
+
+config.window_background_opacity = 0.98
 
 -- or, changing the font size and color scheme.
 config.font_size = 10
