@@ -44,3 +44,5 @@
 font-family = Maple Mono NF
 font-size = 11
 theme = catppuccin-mocha
+cursor-style-blink = true
+background-opacity = 0.9
