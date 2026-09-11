@@ -43,7 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 font-family = Maple Mono NF
 font-size = 11
-theme = catppuccin-mocha
+# theme = catppuccin-mocha
+theme = dark:Catppuccin Mocha, light:Catppuccin Latte
 cursor-style-blink = true
 background-opacity = 0.9
-command = /usr/sbin/fish
